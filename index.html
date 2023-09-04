@@ -175,8 +175,52 @@
         <p>copyright ©2023 ϻr.卄ϻ𝐦ᗩ𝕒𝓭 🤴.All Rights Reserved.<i class="fab fa-instagram"></i> </p>
     </div>
 </div>
-<script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
-<div class="elfsight-app-9245200e-7820-4928-89e7-11d5c8894732"></div>
+
+<section id="cookies">
+    <div class="cookie-container">
+        <div class="cookie-subcontainer">
+            <div class="cookies">
+                <p>This website use cookies to ensure you get the best experience on our website.
+                    <a href="">More Info.</a>
+                </p>
+                <button id="cookies-btn" class="normal">Accepted</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    setCookie = (cName, cValue, expDays) => {
+        let date = new Date();
+        date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = cName + "=" +cValue + ";" + expires + "; path=/";
+    }
+
+    getCookie = (cName) => {
+        const name = cName + "=";
+        const cDecoded = decodeURIComponent(document.cookie);
+        const cArr = cDecoded.split("; ");
+        let value;
+        cArr.forEach(val => {
+            if(val.indexOf(name) === 0) value = val.substring(name.length);
+        })
+
+        return value;
+    }
+
+    document.querySelector("#cookies-btn").addEventListener("click", () => {
+        document.querySelector("#cookies").style.display = "none";
+        setCookie("cookie", true, 30);
+    })
+
+    cookieMessage = () => {
+        if(!getCookie("cookie"))
+        document.querySelector("#cookies").style.display = "block;"
+    }
+
+    window.addEventListener("load", cookieMessage);
+</script>
 
 <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
 <div class="elfsight-app-c38e2b77-faf3-4aeb-ba66-467c594db10f"></div>
